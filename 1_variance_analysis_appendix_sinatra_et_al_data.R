@@ -13,7 +13,10 @@ if (!requireNamespace("haven", quietly = TRUE)) {
 library(haven)
 
 ##############################################
-# After having downloaded the data, load them
+# Load the scientists data which contains one row per paper 
+# and only the authorId retrived from A. Barabasi's website
+# and the citations in the 10 years following publication date
+# retrived with openAlex (https://docs.ropensci.org/openalexR/)
 small<-read_dta("write_your_path/scientists.dta")
 
 # Number of scientists:
