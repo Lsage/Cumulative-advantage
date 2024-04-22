@@ -1,7 +1,7 @@
 
 
 
-setwd("/Users/lsage/Documents/Sociologie/Recherche/Max Weber/Cumulative advantage/arnout_simulations")
+setwd("")
 
 
 q_model<-read.csv("Q_model.csv",header=FALSE)
@@ -226,7 +226,7 @@ tot<-plot_grid(d, a, b, c,
                ncol = 2, nrow = 2)
 
 
-ggsave("/Users/lsage/Documents/Sociologie/Recherche/Max Weber/Cumulative advantage/Scripts/reproduction_2_color_polya_urn/figure1_all_models.jpeg",
+ggsave("/figure1_all_models.jpeg",
        plot=tot, device = "jpeg",
        width = 24, height = 15, units = "cm")
 
