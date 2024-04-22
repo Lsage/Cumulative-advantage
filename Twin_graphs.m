@@ -1,3 +1,4 @@
+% Arnout van de Rijt
 % set random seed
 rng(27);
 
