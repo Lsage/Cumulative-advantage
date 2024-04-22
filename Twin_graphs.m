@@ -1,4 +1,6 @@
 % Arnout van de Rijt
+% This script produces 8 data files needed to create figure 1
+
 % set random seed
 rng(27);
 
