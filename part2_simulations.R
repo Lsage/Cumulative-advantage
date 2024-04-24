@@ -210,7 +210,7 @@ tot<-plot_grid(g1,g2,
                labels=c("V1", "V2"),  
                ncol = 1, nrow = 2)
 
-  ggsave("Images/figure2_all_songs_empi_vs_simulated.jpeg",
+  ggsave("/figure2_all_songs_empi_vs_simulated.jpeg",
          plot=tot, device = "jpeg",
          width = 20, height = 15, units = "cm")
 
