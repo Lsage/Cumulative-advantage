@@ -110,7 +110,7 @@ b<-ggplot(cp_model_long, aes(x = time, y = valeur, group = as.factor(id), color 
 # SD model 
 #######################
 
-set.seed(108431)
+set.seed(10841)
 sd_model<-read.csv("SD_model.csv",header=FALSE)
 
 sd_model_long <- pivot_longer(sd_model, 
@@ -121,7 +121,7 @@ sd_model_long <- pivot_longer(sd_model,
 sd_model_long$time<-rep(1:100,30)
 sd_model_long$id<-sort(rep(1:30,100))
 
-ids<-sample(sd_model_long$id,size=10,replace=FALSE)
+ids<-sample(unique(sd_model_long$id),size=10,replace=FALSE)
 
 sd_model_long$model<-"Settled dispositions"
 
@@ -145,7 +145,7 @@ sd_model_twin_long<-sd_model_twin_long[which(sd_model_twin_long$id%in%ids),]
 sd_model_long<-bind_rows(sd_model_long,sd_model_twin_long)
 
 color_palette <- viridis_pal()(30)
-color_palette <- color_palette[c(1,5,9,13,15,19,21,25,29)]
+color_palette <- color_palette[c(1,5,8,11,13,15,19,21,25,29)]
 
 sd_model_long<-sd_model_long[which(sd_model_long$time<=10),]
 
@@ -203,30 +203,36 @@ color_palette <- viridis_pal()(30)
 
 d<-ggplot(polya_model_long, aes(x = time, y = valeur, group = as.factor(id), color = as.factor(id))) +
   geom_line() +
-  facet_wrap(~model) +
+  facet_wrap(~model)+
   scale_color_manual(values = color_palette) +
   theme_bw() +
   theme(legend.position = "none",
         panel.spacing = unit(1, "lines"),  
         strip.text = element_text(color = "black", face = "bold"),
         strip.background = element_rect(fill = "seashell2"),
-        aspect.ratio = 1.2,
+        aspect.ratio = 1.3,
         panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank()) +  
-  xlab("Draw number") +
-  ylab("Difference #black - #red") +
+        panel.grid.minor.y = element_blank(),
+        axis.title.x = element_text(size = 10),  # Adjust size of x-axis title
+        axis.title.y = element_text(size = 10)) +  # Adjust size of y-axis title) +  
+  xlab("Draw") +
+  ylab("#black - #red") +
   scale_y_continuous(breaks = seq(-100, 100, by = 20), limits = c(-100, 100), expand = c(0, 0)) +
-  scale_x_continuous(breaks = seq(0, 100, by = 25), limits = c(0, 100), expand = c(0, 0))
+  scale_x_continuous(breaks = seq(0, 100, by = 25), limits = c(0, 100), expand = c(0, 0))+
+  theme(strip.text = element_blank()) 
 
-
+d
 
 # Combine all graphs:
-tot<-plot_grid(d, a, b, c, 
-               labels=c("A", "B", "C","D"),  
-               ncol = 2, nrow = 2)
+tot<-plot_grid( a, c, b, 
+               labels=c("A", "B", "C"),  
+               ncol = 1, nrow = 3)
 
 
 ggsave("/figure1_all_models.jpeg",
        plot=tot, device = "jpeg",
-       width = 24, height = 15, units = "cm")
+       width = 10, height = 20, units = "cm")
 
+ggsave("/figure1_polya_urn.jpeg",
+       plot=d, device = "jpeg",
+       width = 10, height = 6, units = "cm")
