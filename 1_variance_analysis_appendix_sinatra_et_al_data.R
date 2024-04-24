@@ -12,7 +12,7 @@ if (!requireNamespace("haven", quietly = TRUE)) {
 }
 library(haven)
 
-your_path<-""
+your_path<-"/Users/lsage/Documents/Sociologie/Recherche/Max Weber/Cumulative advantage/Scripts/reproduction_sinatra/"
 
 
 
@@ -73,7 +73,7 @@ res<-small%>%
 
 main_plot<-ggplot(res,aes(x=k,y=v))+
   geom_point(color="Orchid",alpha=0.8)+
-  geom_smooth(color="red")+
+  geom_smooth(color="red",se=FALSE)+
   labs(
     x = "n",
     # y = expression(bold(paste("Variance(", Z[n],")")))
@@ -94,7 +94,7 @@ main_plot
 
 ggsave(paste0(your_path,"/c_5_scientists_with_k_sup_50_for_n_up_to_50.jpeg"),
        plot=main_plot, device = "jpeg",
-       width = 12.5, height = 9, units = "cm")
+       width = 10, height = 8, units = "cm")
 
 
 tot<-c()
@@ -145,3 +145,4 @@ g
 ggsave(paste0(your_path,"/different_c_scientists_with_k_sup_50.jpeg"),
        plot=g, device = "jpeg",
        width = 20, height = 15, units = "cm")
+
