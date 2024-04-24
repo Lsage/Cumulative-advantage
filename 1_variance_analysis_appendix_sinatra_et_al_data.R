@@ -12,7 +12,7 @@ if (!requireNamespace("haven", quietly = TRUE)) {
 }
 library(haven)
 
-your_path<-"/Users/lsage/Documents/Sociologie/Recherche/Max Weber/Cumulative advantage/Scripts/reproduction_sinatra/"
+your_path<-""
 
 
 
