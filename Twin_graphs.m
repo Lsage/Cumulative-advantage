@@ -67,7 +67,7 @@ c = 1;
 for run = 1:runs
     data(run,1) = (b + b / c) * randn + a;
     for draw = 2:draws
-        data(run,draw) = (b * (1 + 1 / (draw - 1 + c))) * randn + (c * a + sum(data(run,1:draw - 1))) / (draw + c);
+        data(run,draw) = (b * (1 + 1 / (draw - 1 + c))) * randn + (c * a + sum(data(run,1:draw - 1))) / (draw - 1 + c);
     end
 end
 % writematrix(data,'SD_model_twin.csv');
