@@ -14,7 +14,7 @@ install_and_load <- function(package) {
 lapply(required_packages, install_and_load)
 
 # Set the path for the data file
-your_path <- "/Users/lsage/Documents/Sociologie/Recherche/Max Weber/Cumulative advantage/Scripts/reproduction_sinatra/"
+your_path <- ""
 
 # Load and filter the dataset to include only scientists with 50 or more publications
 small <- read_dta(paste0(your_path, "/scientists.dta"))
